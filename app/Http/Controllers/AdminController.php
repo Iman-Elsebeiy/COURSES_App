@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Models\Admin;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -15,10 +17,23 @@ class AdminController extends Controller
     {
         //
     }
-        public function users()
-    {
-        return view('admin.users');
-    }
+    //     public function users()
+    // {
+    //     return view('admin.users');
+    // }
+    public function users(Request $request)
+{
+     $search = $request->input('search');
+    $users = User::query()
+        ->when($search, function ($query, $search) {
+            $query->where('name', 'like', "%{$search}%");
+        })
+        ->get();
+    // all(); // or paginate if you like
+
+    // Pass $users to the Blade view
+    return view('admin.users', compact('users'));
+}
 
     /**
      * Show the form for creating a new resource.
