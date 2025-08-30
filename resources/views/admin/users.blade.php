@@ -62,7 +62,7 @@
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="users.html">Users List</a></li>
+										<li><a href="{{ route('admin.users') }}">Users List</a></li>
 										<li><a href="addUser.html">Add User</a></li>
 									</ul>
 								</li>
@@ -72,10 +72,10 @@
 										<li><a href="categories.html">Categories List</a></li>
 									</ul>
 								</li>
-								<li><a><i class="fa fa-desktop"></i> Cars <span class="fa fa-chevron-down"></span></a>
+								<li><a><i class="fa fa-desktop"></i> Courses<span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="addCar.html">Add Car</a></li>
-										<li><a href="cars.html">Cars List</a></li>
+										<li><a href="addCar.html">Add course</a></li>
+										<li><a href="cars.html">Coursses List</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -251,7 +251,7 @@
                           <th>Registration Date</th>
                           <th>Name</th>
                           <th>Email</th>
-                           <th>Username</th>
+                           <th>Role</th>
                           <th>Active</th>
                           <th>Edit</th>
                         </tr>
@@ -264,8 +264,9 @@
         <tr>
             <td>{{ $user->created_at->format('d M Y') }}</td>
             <td>{{ $user->name }}</td>
-            {{-- <td>{{ $user->username }}</td> --}}
+
             <td>{{ $user->email }}</td>
+            <td>{{ $user->role }}</td>
             {{-- <td>{{ $user->is_active ? 'Yes' : 'No' }}</td> --}}
             <td>
                 {{-- <a href="{{ route('admin.users.edit', $user->id) }}">
