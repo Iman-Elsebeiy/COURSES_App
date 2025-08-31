@@ -1,5 +1,6 @@
 <?php
 
+        use App\Http\Controllers\Teacher\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
@@ -18,8 +19,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 //teacher routes
- Route::get('/teacher/dashboard', [TeacherController::class, 'index'])
-        ->name('teacher.dashboard');
+
+
+
+Route::prefix('teacher')->name('teacher.')->group(function () {
+ Route::get('/dashboard', [TeacherController::class, 'index']) ->name('dashboard');
+
+    Route::resource('courses', CourseController::class);
+    Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+    Route::get('/courses/create', [CourseController::class, 'create'])->name('courses.create');
+    Route::post('/courses', [CourseController::class, 'store'])->name('courses.store');
+    Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
+
+
+});
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

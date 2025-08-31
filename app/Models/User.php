@@ -61,6 +61,17 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
+    //relation between student and teacher as a user and courses
+    public function coursesTeaching()
+    {
+        return $this->hasMany(Course::class, 'teacher_id');
+    }
+
+// A student can enroll in many courses
+public function coursesEnrolled()
+{
+    return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
+}
 
 
 }

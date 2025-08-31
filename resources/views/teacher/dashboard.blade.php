@@ -166,21 +166,6 @@
     </div>
 </div>
 
-        {{-- <div   class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white shadow rounded-2xl p-6 text-center">
-                <h2 class="text-xl font-semibold">Total Courses</h2>
-                <p class="text-2xl mt-2">{{ count($courses) }}</p>
-            </div>
-            <div class="bg-white shadow rounded-2xl p-6 text-center">
-                <h2 class="text-xl font-semibold">Total Students</h2>
-                <p class="text-2xl mt-2">
-                    {{ collect($courses)->sum('students') }}
-                </p>
-            </div> --}}
-            {{-- <div class="bg-white shadow rounded-2xl p-6 text-center">
-                <h2 class="text-xl font-semibold">Pending Tasks</h2>
-                <p class="text-2xl mt-2">5</p>
-            </div> --}}
         </div>
     
 
@@ -211,9 +196,103 @@
         </tbody>
     </table>
 </div>
+///////////////////////////
+{{-- @foreach($courses as $course)
+    <tr>
+        <td>{{ $course->name }}</td>
+        <td>{{ $course->students_count ?? 0 }}</td>
+        <td>
+            <a href="{{ route('courses.show', $course->id) }}" class="btn btn-primary btn-sm">View</a>
+        </td>
+    </tr>
+@endforeach --}}
 
         <!-- /page content -->
-        
+     ///////////////////////////////////////////   
+{{-- <script>
+const ctx = document.getElementById('studentsChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: @json($courses->pluck('name')),
+        datasets: [{
+            label: 'Students',
+            data: @json($courses->map(fn($c) => $c->students->count())),
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script> --}}
+///////////////////////////////////////////
+    <!-- Create Course Modal -->
+    {{-- <div id="createCourseModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow w-96">
+            <h2 class="text-xl font-bold mb-4">Create Course</h2>
+            <form method="POST" action="{{ route('teacher.courses.store') }}">
+                @csrf
+                <label class="block mb-2">Course Name</label>
+                <input type="text" name="name" class="w-full border rounded p-2 mb-4">
 
+                <button type="submit"
+                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                    Save
+                </button>
+                <button type="button" id="closeCreateCourse"
+                    class="px-4 py-2 ml-2 bg-gray-300 rounded hover:bg-gray-400">
+                    Cancel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Grade Assignments Modal -->
+    <div id="gradeAssignmentsModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg shadow w-[500px]">
+            <h2 class="text-xl font-bold mb-4">Grade Assignments</h2>
+            <p>Feature placeholder: you can list assignments here and add grading forms.</p>
+
+            <button type="button" id="closeGradeAssignments"
+                class="px-4 py-2 mt-4 bg-gray-300 rounded hover:bg-gray-400">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Chart.js
+        const ctx = document.getElementById('studentsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @json($courses->pluck('name')),
+                datasets: [{
+                    label: 'Students',
+                    data: @json($courses->map(fn($c) => $c->students->count())),
+                    backgroundColor: '#3b82f6',
+                }]
+            }
+        });
+
+        // Modal handlers
+        const createCourseModal = document.getElementById('createCourseModal');
+        document.getElementById('openCreateCourse').onclick = () => createCourseModal.classList.remove('hidden');
+        document.getElementById('closeCreateCourse').onclick = () => createCourseModal.classList.add('hidden');
+
+        const gradeAssignmentsModal = document.getElementById('gradeAssignmentsModal');
+        document.getElementById('openGradeAssignments').onclick = () => gradeAssignmentsModal.classList.remove('hidden');
+        document.getElementById('closeGradeAssignments').onclick = () => gradeAssignmentsModal.classList.add('hidden');
+    </script> --}}
         <!-- footer content -->
       @endsection

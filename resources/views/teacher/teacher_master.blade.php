@@ -64,8 +64,8 @@
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-book"></i> Courses <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="users.html">Courses List</a></li>
-										<li><a href="addUser.html">Add Course</a></li>
+										<li><a href="{{route('teacher.courses.index')}}">Courses List</a></li>
+										<li><a href="{{route('teacher.courses.create')}}">Add Course</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-edit"></i> Lessons <span class="fa fa-chevron-down"></span></a>
