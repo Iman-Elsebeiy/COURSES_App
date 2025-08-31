@@ -6,12 +6,14 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/home', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -54,3 +56,11 @@ Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])-
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
+
+
+// index
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/aboutUs', [HomeController::class, 'about'])->name('home.about');
+Route::get('/courses', [HomeController::class, 'courses'])->name('home.courses');
+Route::get('/News', [HomeController::class, 'blog'])->name('home.blog');
+Route::get('/contactUS', [HomeController::class, 'contact'])->name('home.contact');
