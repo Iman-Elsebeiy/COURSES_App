@@ -9,4 +9,9 @@ class Category extends Model
     protected $table = 'category';
     protected $fillable = ['title', 'description'];
     public $timestamps = true;
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

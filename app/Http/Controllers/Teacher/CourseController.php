@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Teacher;
 
 use App\Models\Course;
+use App\Models\Category;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
@@ -26,9 +27,9 @@ class CourseController extends Controller
     public function create()
     {
         //
-        // $categories = Category::all();
+        $categories = Category::all();
 
-        return view('teacher.courses_create'); //, compact('categories')
+        return view('teacher.courses_create', compact('categories')); //
     }
 
     /**
@@ -45,7 +46,8 @@ class CourseController extends Controller
         'lessons' => 'nullable|integer|min:0',
         'description' => 'nullable|string',
         'price' => 'required|numeric|min:0',
-        'category' => 'nullable|string|max:255',
+        // 'category' => 'nullable|string|max:255',
+        'category_id' => 'required|exists:category,id',
         'course_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         'teacher_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
     ]);

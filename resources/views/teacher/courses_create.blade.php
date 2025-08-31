@@ -144,15 +144,15 @@
 											<div class="col-md-6 col-sm-6 ">
 												<select class="form-control" name="category" id="category">
 													<option value=" ">Select Category</option>
-													  {{-- @foreach($categories as $category)
-                                                          <option value="{{ $category->id }}">{{ $category->name }}</option> //category dynamic
-                                                              @endforeach --}}
+													  @foreach($categories as $category)
+                                                          <option value="{{ $category->id }}">{{ $category->title }}</option> //category dynamic
+                                                              @endforeach
 
-													 <option value="Programming">Programming</option>
+													 {{-- <option value="Programming">Programming</option>
                                                         <option value="Design">Design</option>
                                                         <option value="Business">Business</option>
                                                         <option value="Mathematics">Mathematics</option>
-                                                        <option value="Science">Science</option>
+                                                        <option value="Science">Science</option> --}}
 											
 												</select>
 											</div>

@@ -1,11 +1,8 @@
 <?php
 
-<<<<<<< HEAD
-        use App\Http\Controllers\Teacher\CourseController;
-=======
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Teacher\CourseController;
+
 use App\Http\Controllers\CategoryController;
->>>>>>> 14e4f15b870e15e0ad7c6a7e5057e817f3153588
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
@@ -27,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::prefix('teacher')->name('teacher.')->group(function () {
+Route::middleware(['auth', 'role:teacher'])->prefix('teacher')->name('teacher.')->group(function () {
  Route::get('/dashboard', [TeacherController::class, 'index']) ->name('dashboard');
 
     Route::resource('courses', CourseController::class);

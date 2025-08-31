@@ -17,13 +17,17 @@ return new class extends Migration
         $table->string('course_image')->nullable();
         $table->string('teacher_image')->nullable();
         $table->string('teacher_job')->nullable();
-        // $table->string('category')->nullable();
         $table->integer('lessons')->default(0); 
+     $table->decimal('price', 8, 2)->default(0); 
+         $table->unsignedBigInteger('category_id')->nullable();
+        $table->foreign('category_id')->references('id')->on('category')
+              ->onDelete('set null');
+
         
-        $table->decimal('price', 8, 2)->default(0); 
+      
         $table->unsignedBigInteger('teacher_id'); // link to user (teacher)
         $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
-        $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
+        // $table->foreignId('category_id')->nullable()->constrained()->onDelete('set null');
         $table->timestamps();
         });
     }
