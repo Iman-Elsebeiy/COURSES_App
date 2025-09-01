@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin | Add Category</title>
+    <title>Admin | Categories</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('admin/cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css') }}">
@@ -197,83 +197,87 @@
           </div>
         <!-- /top navigation -->
 
-            <!-- page content -->
-            <div class="right_col" role="main">
-                <div class="">
-                    <div class="page-title">
-                        <div class="title_left">
-                            <h3>Manage Categories</h3>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 ">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Add Category</h2>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <br />
-                                    <form id="demo-form2" method="POST" action="{{ route('categories.store') }}"
-                                        class="form-horizontal form-label-left">
-                                        @csrf
-
-                                        @if (session('success'))
-                                            <div class="alert alert-success">{{ session('success') }}</div>
-                                        @endif
-
-                                        @if ($errors->any())
-                                            <div class="alert alert-danger">
-                                                <ul style="margin:0;">
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
-
-                                        <div class="item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                                for="category-title">
-                                                Category Title <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="category-title" name="title"
-                                                    value="{{ old('title') }}" required class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="item form-group">
-                                            <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                                for="category-description">
-                                                Category Description <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 ">
-                                                <input type="text" id="category-description" name="description"
-                                                    value="{{ old('description') }}" required class="form-control">
-                                            </div>
-                                        </div>
-
-                                        <div class="ln_solid"></div>
-                                        <div class="item form-group">
-                                            <div class="col-md-6 col-sm-6 offset-md-3">
-                                                <a href="{{ url()->previous() }}" class="btn btn-primary"
-                                                    type="button">Cancel</a>
-                                                <button type="submit" class="btn btn-success">Add</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+        <!-- page content -->
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left"><h3>Manage Categories</h3></div>
+          <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+              </div>
             </div>
-            <!-- /page content -->
+          </div>
+        </div>
 
-             <!-- footer content -->
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>List of Categories</h2>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="x_content">
+                @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
+                <div class="table-responsive">
+                  <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      @foreach($categories as $category)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $category->title }}</td>
+                          <td>{{ \Illuminate\Support\Str::limit($category->description, 80) }}</td>
+                          <td class="text-center">
+                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-info" title="Edit">
+                              <img src="{{ asset('admin/images/edit.png') }}" alt="Edit" style="width:18px;height:18px;">
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذا التصنيف؟');">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-sm btn-danger" title="Delete">
+                                <img src="{{ asset('admin/images/delete.png') }}" alt="Delete" style="width:18px;height:18px;">
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+
+                  </table>
+                </div> <!-- /table-responsive -->
+              </div> <!-- /x_content -->
+
+            </div> <!-- /x_panel -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /page content -->
+
+         <!-- footer content -->
         <footer>
           <div class="pull-right">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
