@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 
 // Route::get('/', function () {
@@ -46,3 +47,8 @@ Route::get('/aboutUs', [HomeController::class, 'about'])->name('home.about');
 Route::get('/courses', [HomeController::class, 'courses'])->name('home.courses');
 Route::get('/News', [HomeController::class, 'blog'])->name('home.blog');
 Route::get('/contactUS', [HomeController::class, 'contact'])->name('home.contact');
+
+
+//Posts... news
+
+Route::get('/News', [PostController::class, 'index'])->name('home.blog');

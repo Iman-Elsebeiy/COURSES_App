@@ -42,63 +42,20 @@
 			<div class="row">
 				<div class="col-lg-9">
 					<!-- blog post -->
+                   @foreach($posts as $post)
 					<div class="blog-post">
-						<img src="img/blog/1.jpg" alt="">
-						<h3>How to create the perfect resume</h3>
-						<div class="blog-metas">
-							<div class="blog-meta author">
-								<div class="post-author set-bg" data-setbg="img/authors/1.jpg"></div>
-								<a href="#">James Smith</a>
-							</div>
-							<div class="blog-meta">
-								<a href="#">Development</a>
-							</div>
-							<div class="blog-meta">
-								<a href="#">June 12, 2018</a>
-							</div>
-							<div class="blog-meta">
-								<a href="#">2 Comments</a>
-							</div>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur. Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum, ut vulputate mauris ligula a metus. Aenean vel congue diam, sed bibendum ipsum. Nunc vulputate aliquet tristique. Integer et pellentesque urna. </p>
-						<a href="#" class="site-btn readmore">Read More</a>
-					</div>
-					<!-- blog post -->
-					<div class="blog-post">
-						<img src="img/blog/2.jpg" alt="">
-						<h3>5 Tips to make money from home</h3>
+						<img src="{{asset('index/img/blog/2.jpg')}}" alt="">
+						<h3>{{ $post->title }}</h3>
 						<div class="blog-metas">
 							<div class="blog-meta author">
 								<div class="post-author set-bg" data-setbg="img/authors/2.jpg"></div>
-								<a href="#">James Smith</a>
+								<a href="#">{{ $post->admin->name ?? 'Unknown Author' }}</a>
 							</div>
 							<div class="blog-meta">
-								<a href="#">Development</a>
+								<a href="#">{{ $post->category->name ?? 'Uncategorized' }}</a>
 							</div>
 							<div class="blog-meta">
-								<a href="#">June 12, 2018</a>
-							</div>
-							<div class="blog-meta">
-								<a href="#">2 Comments</a>
-							</div>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur. Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum, ut vulputate mauris ligula a metus. Aenean vel congue diam, sed bibendum ipsum. Nunc vulputate aliquet tristique. Integer et pellentesque urna. </p>
-						<a href="#" class="site-btn readmore">Read More</a>
-					</div>
-					<!-- blog post -->
-					<div class="blog-post">
-						<img src="img/blog/3.jpg" alt="">
-						<h3>Why choose an online course?</h3>
-						<div class="blog-metas">
-							<div class="blog-meta author">
-								<div class="post-author set-bg" data-setbg="img/authors/3.jpg"></div>
-								<a href="#">James Smith</a>
-							</div>
-							<div class="blog-meta">
-								<a href="#">Development</a>
-							</div>
-							<div class="blog-meta">
-								<a href="#">June 12, 2018</a>
+								<a href="#">{{ $post->created_at->format('F d, Y') }}</a>
 							</div>
 							<div class="blog-meta">
 								<a href="#">2 Comments</a>
@@ -107,6 +64,9 @@
 						<p>Lorem ipsum dolor sit amet, consectetur. Phasellus sollicitudin et nunc eu efficitur. Sed ligula nulla, molestie quis ligula in, eleifend rhoncus ipsum. Donec ultrices, sem vel efficitur molestie, massa nisl posuere ipsum, ut vulputate mauris ligula a metus. Aenean vel congue diam, sed bibendum ipsum. Nunc vulputate aliquet tristique. Integer et pellentesque urna. </p>
 						<a href="#" class="site-btn readmore">Read More</a>
 					</div>
+                 @endforeach
+                    <!-- blog post -->
+
 					<div class="site-pagination">
 						<span class="active">01.</span>
 						<a href="#">02.</a>
