@@ -46,9 +46,11 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($admin));
+          // login with admin guard
+          Auth::guard('admin')->login($admin);
 
-        Auth::login($admin);
+        // Auth::login($admin);
 
-        return redirect()->route('admin.dashboard');
+         return redirect()->route('admin.dashboard');
     }
 }

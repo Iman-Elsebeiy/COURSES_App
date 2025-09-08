@@ -76,4 +76,37 @@ public function coursesEnrolled()
 }
 
 
+    /**
+     * Check if user is a teacher
+     */
+    public function isTeacher(): bool
+    {
+        return $this->role === 'teacher';
+    }
+
+    /**
+     * Check if user is a student
+     */
+    public function isStudent(): bool
+    {
+        return $this->role === 'student';
+    }
+
+    /**
+     * Scope to get only teachers
+     */
+    public function scopeTeachers($query)
+    {
+        return $query->where('role', 'teacher');
+    }
+
+    /**
+     * Scope to get only students
+     */
+    public function scopeStudents($query)
+    {
+        return $query->where('role', 'student');
+    }
+
+
 }

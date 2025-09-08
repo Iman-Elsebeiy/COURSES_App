@@ -130,13 +130,17 @@
                 </div>
               </div>
             </div>
-                     
+           ////          
       
+      @if(Auth::check() && Auth::user()->role === 'teacher')
+                        <x-nav-link href="/teacher/dashboard" :active="request()->is('teacher/*')">
+                            {{ __('Teacher Dashboard') }}
+                        </x-nav-link>
+                    @endif
 
-
-
+//////
          <div class="p-6">
-        <h1 class="text-3xl font-bold mb-6">Welcome </h1>
+        <h1 class="text-3xl font-bold mb-6">Welcome  {{ Auth::user()->name }} (Teacher)</h1>
 {{-- {{ $teacher->name }} --}}
         <!-- Teacher Stats -->
 

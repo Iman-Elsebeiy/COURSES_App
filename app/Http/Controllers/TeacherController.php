@@ -8,8 +8,27 @@ use Illuminate\Support\Facades\Auth;
 class TeacherController extends Controller
 {
     //
-       public function index()
-    {
+    
+        public function dashboard(){
+
+
+
+              $teacher = Auth::user();
+
+        // Example data you might later replace with real DB queries
+        $courses = [
+            ['name' => 'Math 101', 'students' => 25],
+            ['name' => 'Science 202', 'students' => 18],
+            ['name' => 'History 303', 'students' => 30],
+        ];
+
+        return view('teacher.dashboard', compact('teacher', 'courses'));
+    }
+        
+        }
+    
+    
+    
 
 
     //      $teacher = auth()->user();
@@ -36,17 +55,5 @@ class TeacherController extends Controller
     //     ]);
     // }
 ////////////////////////////////////////////////////////////////////
-       $teacher = Auth::user();
-
-        // Example data you might later replace with real DB queries
-        $courses = [
-            ['name' => 'Math 101', 'students' => 25],
-            ['name' => 'Science 202', 'students' => 18],
-            ['name' => 'History 303', 'students' => 30],
-        ];
-
-        return view('teacher.dashboard', compact('teacher', 'courses'));
-    }
-}
-
+       
 

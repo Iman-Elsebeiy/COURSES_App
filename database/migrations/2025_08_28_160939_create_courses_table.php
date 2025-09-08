@@ -43,7 +43,8 @@ return new class extends Migration
            $table->dropForeign(['category_id']);
             $table->dropForeign(['teacher_id']);
             $table->dropColumn(['category_id', 'teacher_id']);
+           });
 
-    });
+    
     }
 };
