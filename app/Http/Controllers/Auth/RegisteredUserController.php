@@ -18,16 +18,31 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function store(Request $request): RedirectResponse
-{
-    dd($request->all());
+    // public function create(): View
+    // {
+    //     return view('auth.register');
+    // }
 
-    $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-        'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        'role' => ['required', 'in:student,teacher'],
-    ]);
+    /**
+     * Handle an incoming registration request.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+             'role' => ['required', 'in:student,teacher'], //  only allow these
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+             'role' => $request->role, //  role comes from dropdown
+            'password' => Hash::make($request->password),
+        ]);
 
     $user = User::create([
         'name' => $request->name,
@@ -43,5 +58,20 @@ class RegisteredUserController extends Controller
 
     return back();
 
-}
+
+ // Redirect based on role
+        return $this->redirectBasedOnRole($user);
+    }
+
+    /**
+     * Redirect user based on their role
+     */
+    private function redirectBasedOnRole(User $user): RedirectResponse
+    {
+        return match($user->role) {
+            'teacher' => redirect()->route('teacher.dashboard'),
+            'student' => redirect()->route('student.dashboard'),
+            default => redirect('/dashboard'),
+        };
+    }
 }

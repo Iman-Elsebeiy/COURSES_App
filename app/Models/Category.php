@@ -14,4 +14,10 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+    public $timestamps = true;
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

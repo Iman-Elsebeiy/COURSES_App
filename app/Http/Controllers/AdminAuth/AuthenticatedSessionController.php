@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('admin_auth.login');
+        return view('admin_auth.login');  // your admin login blade
     }
 
     /**
@@ -28,20 +28,37 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route(('admin.dashboard'));
+        return redirect()->route('admin.dashboard');
     }
 
+// public function store(Request $request): RedirectResponse
+// {
+//     $credentials = $request->validate([
+//         'email' => ['required', 'email'],
+//         'password' => ['required'],
+//     ]);
+
+//     if (Auth::guard('admin')->attempt($credentials, $request->boolean('remember'))) {
+//         $request->session()->regenerate();
+
+//         return redirect()->intended(route('admin.dashboard')); // ✅ Always send admins to dashboard
+//     }
+
+//     return back()->withErrors([
+//         'email' => 'The provided credentials do not match our records.',
+//     ]);
+// }
     /**
      * Destroy an authenticated session.
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('admin_auth.login');
     }
 }

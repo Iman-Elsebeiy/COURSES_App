@@ -63,6 +63,50 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
+    //relation between student and teacher as a user and courses
+    public function coursesTeaching()
+    {
+        return $this->hasMany(Course::class, 'teacher_id');
+    }
+
+// A student can enroll in many courses
+public function coursesEnrolled()
+{
+    return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
+}
+
+
+    /**
+     * Check if user is a teacher
+     */
+    public function isTeacher(): bool
+    {
+        return $this->role === 'teacher';
+    }
+
+    /**
+     * Check if user is a student
+     */
+    public function isStudent(): bool
+    {
+        return $this->role === 'student';
+    }
+
+    /**
+     * Scope to get only teachers
+     */
+    public function scopeTeachers($query)
+    {
+        return $query->where('role', 'teacher');
+    }
+
+    /**
+     * Scope to get only students
+     */
+    public function scopeStudents($query)
+    {
+        return $query->where('role', 'student');
+    }
 
 
 }

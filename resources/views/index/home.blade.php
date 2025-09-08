@@ -351,13 +351,13 @@
                             <!-- email -->
                             <div class="form-group mb-3">
                                 <label for="email">Email</label>
-                                <input id="email" type="text" name="email" placeholder="Your E-mail"
+                                <input id="email" type="email" name="email" placeholder="Your E-mail"
                                     value="{{ old('email') }}">
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
 
                             <!-- Role Selection -->
-                            <div class="form-group mb-3">
+                            {{-- <div class="form-group mb-3">
                                 <label for="role">Role</label>
                                 <select id="role" name="role" class="form-control">
                                     <option value="student" {{ old('role') == 'student' ? 'selected' : '' }}>Student
@@ -366,7 +366,17 @@
                                     </option>
                                 </select>
                                 <x-input-error :messages="$errors->get('role')" class="mt-2" />
-                            </div>
+                            </div> --}}
+                            <div>
+    <x-input-label for="role" :value="__('Register As')" />
+
+    <select id="role" name="role" class="block mt-1 w-full" required>
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+    </select>
+
+    <x-input-error :messages="$errors->get('role')" class="mt-2" />
+</div>
 
                             <!-- Password -->
                             <div class="form-group mb-3">
