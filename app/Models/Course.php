@@ -13,18 +13,16 @@ class Course extends Model
     protected $table = 'courses';
 
     protected $fillable = [
-    'name',
-    'description',
-    'course_image',
-    'teacher_image',
-    'teacher_job',
-    'lessons',
-    'teacher_id',
-    'price',
-    'category'
-
-
-];
+        'name',
+        'description',
+        'course_image',
+        'teacher_image',
+        'teacher_job',
+        'lessons',
+        'category_id',
+        'price',
+        'teacher_id',
+    ];
 
     // Course belongs to a teacher (User with role=teacher)
     public function teacher()
@@ -39,7 +37,7 @@ class Course extends Model
     }
     public function category()
 {
-    return $this->belongsTo(Category::class);
+    return $this->belongsTo(Category::class,'category_id');
 }
 
 

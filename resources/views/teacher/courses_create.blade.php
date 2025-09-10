@@ -47,6 +47,13 @@
 									</ul>
 									<div class="clearfix"></div>
 								</div>
+								{{-- @if(session('success'))
+									<div class="alert alert-success alert-dismissible " role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+										</button>
+										<strong>Great!</strong> {{ session('success') }}
+									</div>
+								@endif --}}
 								<div class="x_content">
 									<br />
 									<form id="demo-form2" action="{{route('teacher.courses.store')}}" method="POST"
@@ -83,7 +90,7 @@
 										
 										
 									
-										/////////////////
+										
                                              {{-- Course Cover Image --}}
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Course Image <span class="required">*</span>
@@ -91,7 +98,8 @@
 											<div class="col-md-6 col-sm-6 ">
 												<input type="file" id="course_image" name="course_image" 
                                                  required="required" class="form-control" accept="image/*">
-                                                 <img id="preview" class="image-preview mt-2" >
+                                                 <img id="preview" class="image-preview mt-2 img-thumbnail"
+                                                      style="width:120px; height:120px; object-fit:cover;">
                                              @error('course_image')
                                                     <div class="text-danger small mt-1">{{ $message }}</div>
                                                  @enderror
@@ -99,19 +107,7 @@
 										</div>
                                      
 
-										{{-- Teacher Image --}}
-                                   <div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="teacher_image">Teacher Image <span class="required">*</span>
-											</label>
-											<div class="col-md-6 col-sm-6 ">
-												<input type="file" id="teacher_image" name="teacher_image" 
-                                                 required="required" class="form-control" accept="image/*">
-                                                 <img id="teacherPreview" class="image-preview mt-2" >
-                                             @error('teacher_image')
-                                                    <div class="text-danger small mt-1">{{ $message }}</div>
-                                                 @enderror
-											</div>
-										</div>
+										
 										
 										   {{-- Teacher Job Title --}}
 
@@ -119,7 +115,7 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="teacher_job">Teacher title job <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="teacher_job" name="teacher_job" required="required" class="form-control ">
+												<input type="text" id="teacher_job" name="teacher_job" class="form-control ">
                                                   @error('teacher_job')
                                                  <div class="text-danger small">{{ $message }}</div>
                                                  @enderror
@@ -142,27 +138,22 @@
 											<label class="col-form-label col-md-3 col-sm-3 label-align" for="category">Category <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<select class="form-control" name="category" id="category">
+												<select class="form-control" name="category_id" id="category">
 													<option value=" ">Select Category</option>
 													  @foreach($categories as $category)
                                                           <option value="{{ $category->id }}">{{ $category->title }}</option> //category dynamic
                                                               @endforeach
 
-													 {{-- <option value="Programming">Programming</option>
-                                                        <option value="Design">Design</option>
-                                                        <option value="Business">Business</option>
-                                                        <option value="Mathematics">Mathematics</option>
-                                                        <option value="Science">Science</option> --}}
+													
 											
 												</select>
 											</div>
 										</div>
 
                              
-										/////////////////////////////////
+										
 
 
-							   /////////////////////////
 
                                                 <!-- Price -->
 
@@ -175,8 +166,21 @@
                                                   @enderror
 											</div>
 										</div>
+										{{-- Teacher Image --}}
+                                   <div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="teacher_image">Teacher Image <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input type="file" id="teacher_image" name="teacher_image" 
+                                                 required="required" class="form-control" accept="image/*">
+                                                 <img id="teacherPreview" class="image-preview mt-2 img-thumbnail"
+                                                      style="width:120px; height:120px; object-fit:cover;">
+                                             @error('teacher_image')
+                                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                                 @enderror
+											</div>
+										</div>
 
-                                        ///////////////////////
 
 
 										

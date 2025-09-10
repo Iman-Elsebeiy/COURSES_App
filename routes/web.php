@@ -91,7 +91,6 @@ Route::middleware([ 'role:teacher'])->prefix('teacher')->name('teacher.')->group
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/courses/create', [CourseController::class, 'create'])->name('courses.create');
     Route::post('/courses', [CourseController::class, 'store'])->name('courses.store');
-    Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 
 
 });

@@ -107,6 +107,11 @@ public function coursesEnrolled()
     {
         return $query->where('role', 'student');
     }
+    public function courses()
+{
+    return $this->hasMany(Course::class, 'teacher_id');
+}
+
 
 
 }
