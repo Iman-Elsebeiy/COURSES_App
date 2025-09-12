@@ -19,8 +19,8 @@ class CourseController extends Controller
         //
         // $courses = Course::where('teacher_id', auth()->id())->get();
         // $courses = Course::all();
-        // $courses = auth()->user()->courses()->with('category')->get();//show category with name(title)
-        // return view('teacher.courses_index', compact('courses'));
+        $courses = auth()->user()->courses()->with('category')->get();//show category with name(title)
+        return view('teacher.courses_index', compact('courses'));
         
     }
 
@@ -72,9 +72,9 @@ class CourseController extends Controller
 
     Course::create($validated);
 
-    return redirect()->route('teacher.courses.index')
-                     ->with('created', 'Course created successfully!');
-    // return back()->with('success', 'Course created successfully!');
+    // return redirect()->route('teacher.courses.index')
+    //                  ->with('created', 'Course created successfully!');
+    return back()->with('created', 'Course created successfully!');
 }
 
 ///////////////////////////////////
@@ -95,16 +95,81 @@ class CourseController extends Controller
 //      */
   
 //         //
-//         public function show($id)
-// {
-//     $course = Course::with('lessons')->findOrFail($id);
-//     return view('teacher.courses_show', compact('course'));
-// }
+        public function show($id)
+{
+    $course = Course::with('lessons')->findOrFail($id);
+    return view('teacher.courses_show', compact('course'));
+}
 
     
 
     /**
      * Show the form for editing the specified resource.
      */
+    public function edit(Course $course)
+    {
+        //
+        $course=Course::findOrFail($course->id);
+        $categories=Category::all();
+        return view('teacher.courses_edit', compact('course', 'categories'));
+    }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Course $course)
+    {
+        
+        //
+           $validated = $request->validate([
+        'name' => 'required|string|max:255|unique:courses,name,' . $course->id,
+        'teacher_job' => 'nullable|string|max:255',
+        'lessons' => 'nullable|integer|min:0',
+        'description' => 'nullable|string',
+        'price' => 'required|numeric|min:0',
+        'category_id' => 'required|exists:category,id',
+        'course_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'teacher_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
+
+    // if there is new image for course
+    if ($request->hasFile('course_image')) {
+        $validated['course_image'] = $request->file('course_image')->store('courses', 'public');
+    }
+
+    //if there is new image for teacher
+    if ($request->hasFile('teacher_image')) {
+        $validated['teacher_image'] = $request->file('teacher_image')->store('teachers', 'public');
+    }
+if ($course->teacher_id !== auth()->id()) {
+    abort(403, 'Unauthorized action.');
+}
+    // teacher_id 
+    $validated['teacher_id'] = $course->teacher_id;
+
+    //update course
+    $course->update($validated);
+
+    return redirect()->route('teacher.courses.index')
+                     ->with('updated', 'Course updated successfully!');
+                     
+}
+    
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Course $course)
+    {
+        //
+        if($course->teacher_id !==auth()->id()){
+
+            abort(403,'unauthorized action.');
+        }
+
+        $course->delete();
+
+        return redirect()->route('teacher.courses.index')
+                         ->with('deleted', 'Course deleted successfully!');
+    }
 }

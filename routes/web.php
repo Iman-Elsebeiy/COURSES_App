@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Teacher\CourseController;
-
-use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Teacher\CourseController;
+use App\Http\Controllers\Teacher\LessonController;
 
 
 // Route::get('/', function () {
@@ -91,8 +92,13 @@ Route::middleware([ 'role:teacher'])->prefix('teacher')->name('teacher.')->group
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/courses/create', [CourseController::class, 'create'])->name('courses.create');
     Route::post('/courses', [CourseController::class, 'store'])->name('courses.store');
-
-
+    Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
+    Route::get('courses/{course}/edit',[CourseController::class,'edit'])->name('courses.edit');
+    Route::post('courses/{course}',[CourseController::class,'update'])->name('courses.update');
+    Route::delete('courses/{course}',[CourseController::class,'destroy'])->name('courses.destroy');
+ //lessons
+    Route::get('/courses/{course}/lessons/create', [LessonController::class, 'create'])->name('lessons.create');
+    Route::post('/courses/{course}/lessons', [LessonController::class, 'store'])->name('lessons.store');
 });
 
 

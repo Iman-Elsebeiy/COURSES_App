@@ -47,11 +47,15 @@
 									</ul>
 									<div class="clearfix"></div>
 								</div>
-								{{-- @if(session('success'))
+
+								{{-- //return successfull message --}}
+
+								
+								{{-- @if(session('created'))
 									<div class="alert alert-success alert-dismissible " role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
 										</button>
-										<strong>Great!</strong> {{ session('success') }}
+										<strong>Great!</strong> {{ session('created') }}
 									</div>
 								@endif --}}
 								<div class="x_content">

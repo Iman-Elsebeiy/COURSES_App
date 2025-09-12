@@ -40,8 +40,8 @@ class Course extends Model
     return $this->belongsTo(Category::class,'category_id');
 }
 
-
-
-
-    
+public function lessons()
+{
+    return $this->hasMany(Lesson::class); 
+}
 }
