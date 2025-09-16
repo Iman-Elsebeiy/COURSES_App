@@ -72,9 +72,9 @@ class CourseController extends Controller
 
     Course::create($validated);
 
-    // return redirect()->route('teacher.courses.index')
-    //                  ->with('created', 'Course created successfully!');
-    return back()->with('created', 'Course created successfully!');
+    return redirect()->route('teacher.courses.index')
+                     ->with('created', 'Course created successfully!');
+    // return back()->with('created', 'Course created successfully!');
 }
 
 ///////////////////////////////////
@@ -97,9 +97,28 @@ class CourseController extends Controller
 //         //
         public function show($id)
 {
-    $course = Course::with('lessons')->findOrFail($id);
+    
+
+       $course = Course::with(['category','teacher'])->findOrFail($id);
+
+
+    if ($course->teacher_id !== auth()->id()) {
+        abort(403, 'Unauthorized action.');
+    }
+
     return view('teacher.courses_show', compact('course'));
 }
+    // $course = Course::with('lessons')->findOrFail($id);
+    // return view('teacher.courses_show', compact('course'));
+    // $course=Course::findOrFail($id);
+
+//     $course = Course::with('category','teacher')->findOrFail($id);
+//     if($course->teacher_id !==auth()->id()){
+
+//         abort(403, 'unauthorized action.');
+//     }
+//      return view('teacher.courses_show', compact('course'));
+// }
 
     
 

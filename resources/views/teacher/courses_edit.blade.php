@@ -97,7 +97,8 @@
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="file" id="course_image" name="course_image" value="{{ $course->course_image }}" class="form-control" accept="image/*">
-                                                 <img id="preview" class="image-preview mt-2" src="{{ asset('storage/' . $course->course_image) }}" alt="Course Image">
+                                                 <img id="preview" class="image-preview mt-2" src="{{ asset('storage/' . $course->course_image) }}"
+												     style="width:120px; height:120px; object-fit:cover;" alt="Course Image">
                                              @error('course_image')
                                                     <div class="text-danger small mt-1">{{ $message }}</div>
                                                  @enderror
@@ -111,7 +112,7 @@
 											</label>
 											<div class="col-md-6 col-sm-6 ">
 												<input type="file" id="teacher_image" name="teacher_image" value="{{ $course->teacher_image }}" class="form-control" accept="image/*">
-                                                 <img id="teacherPreview" class="image-preview mt-2" src="{{ asset('storage/' . $course->teacher_image) }}" alt="Teacher Image">
+                                                 <img id="teacherPreview" class="image-preview mt-2" style="width:120px; height:120px; object-fit:cover;" src="{{ asset('storage/' . $course->teacher_image) }}" alt="Teacher Image">
                                              @error('teacher_image')
                                                     <div class="text-danger small mt-1">{{ $message }}</div>
                                                  @enderror
@@ -183,7 +184,7 @@
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">
                                                 <a href="{{ route('teacher.dashboard') }}" class="btn btn-primary">Cancel</a>
-												<button  type="submit" class="btn btn-success">Add</button>
+												<button  type="submit" class="btn btn-success">Update</button>
 											</div>
 										</div>
 

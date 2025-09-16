@@ -29,6 +29,7 @@
     <link href="{{asset('admin/build/css/custom.min.css')}}" rel="stylesheet">
 
 
+
     
   </head>
 
@@ -258,5 +259,6 @@
     <!-- Custom Theme Scripts -->
     <script src="{{asset('admin/build/js/custom.min.js')}}"></script>
 @stack('scripts')
+
   </body>
 </html>

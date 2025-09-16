@@ -51,13 +51,13 @@
 								{{-- //return successfull message --}}
 
 								
-								{{-- @if(session('created'))
+								@if(session('created'))
 									<div class="alert alert-success alert-dismissible " role="alert">
 										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
 										</button>
 										<strong>Great!</strong> {{ session('created') }}
 									</div>
-								@endif --}}
+								@endif
 								<div class="x_content">
 									<br />
 									<form id="demo-form2" action="{{route('teacher.courses.store')}}" method="POST"
