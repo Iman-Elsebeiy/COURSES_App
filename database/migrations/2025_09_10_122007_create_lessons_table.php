@@ -18,6 +18,8 @@ return new class extends Migration
         $table->text('description')->nullable();
         $table->string('video_url')->nullable(); // for YouTube/Vimeo
         $table->string('video_file')->nullable(); // for uploaded video
+          // Ordering
+            $table->integer('order')->default(0);     // To control sequence of lessons in a course
         $table->timestamps();
         });
     }

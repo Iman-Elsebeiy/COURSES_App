@@ -97,6 +97,10 @@
                             🗑 Delete
                         </button>
                     </form>
+                    <a href="{{ route('teacher.lessons.create', $course->id) }}" class="btn btn-primary">
+    Add Lesson
+</a>
+
                 </div>
             </div>
         </div>

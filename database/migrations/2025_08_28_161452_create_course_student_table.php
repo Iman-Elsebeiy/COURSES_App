@@ -12,12 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('course_student', function (Blueprint $table) {
-         $table->id();
-        $table->unsignedBigInteger('course_id');
-        $table->unsignedBigInteger('student_id'); // actually user_id with role = student
-        $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-        $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
-        $table->timestamps();
+    $table->id();    
+    $table->unsignedBigInteger('course_id');
+    $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+
+    $table->unsignedBigInteger('student_id');
+    $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+ // Ensure unique enrollment
+    $table->unique(['course_id', 'student_id']);
+    $table->timestamps();
+
+   
+     
     });
     }
 

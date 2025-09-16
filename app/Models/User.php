@@ -64,7 +64,7 @@ class User extends Authenticatable
     }
 
     //relation between student and teacher as a user and courses
-    public function coursesTeaching()
+    public function coursesTaught()
     {
         return $this->hasMany(Course::class, 'teacher_id');
     }
@@ -72,7 +72,7 @@ class User extends Authenticatable
 // A student can enroll in many courses
 public function coursesEnrolled()
 {
-    return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id');
+    return $this->belongsToMany(Course::class, 'course_student', 'student_id', 'course_id') ->withTimestamps();;
 }
 
 

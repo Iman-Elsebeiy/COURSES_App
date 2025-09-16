@@ -86,8 +86,11 @@ Route::middleware(['auth'])->group(function () {
    
 Route::middleware([ 'role:teacher'])->prefix('teacher')->name('teacher.')->group(function () {
     Route::get('/dashboard', [TeacherController::class, 'dashboard']) ->name('dashboard');
-   
-//courses
+   //lessons
+    Route::get('/courses/{course}/lessons/create', [LessonController::class, 'create'])->name('lessons.create');
+    Route::post('/courses/{course}/lessons', [LessonController::class, 'store'])->name('lessons.store');
+    Route::get('/courses/{course}/lessons', [LessonController::class, 'index'])->name('lessons.index');
+// courses
     Route::resource('courses', CourseController::class);
     Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/courses/create', [CourseController::class, 'create'])->name('courses.create');

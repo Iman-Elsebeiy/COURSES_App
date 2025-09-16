@@ -33,7 +33,8 @@ class Course extends Model
     // Course has many students (Users with role=student)
     public function students()
     {
-        return $this->belongsToMany(User::class, 'course_student', 'course_id', 'student_id');
+        return $this->belongsToMany(User::class, 'course_student', 'course_id', 'student_id')
+        ->withTimestamps();
     }
     public function category()
 {
@@ -42,6 +43,6 @@ class Course extends Model
 
 public function lessons()
 {
-    return $this->hasMany(Lesson::class); 
+    return $this->hasMany(Lesson::class,'course_id'); 
 }
 }
