@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Users</title>
+    <title>Admin | Categories</title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('admin/cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css') }}">
@@ -48,7 +49,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>{{ Auth::user()->name }}</h2>
+                <h2>m</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -62,20 +63,8 @@
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="{{ route('admin.users') }}">Users List</a></li>
+										<li><a href="users.html">Users List</a></li>
 										<li><a href="addUser.html">Add User</a></li>
-									</ul>
-								</li>
-                                <li><a><i class="fa fa-desktop"></i> posts <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="{{ route('admin.addpost') }}">Add post</a></li>
-										<li><a href="{{ route('admin.posts') }}">posts List</a></li>
-									</ul>
-								</li>
-                                <li><a><i class="fa fa-desktop"></i> Courses<span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="{{ route('admin.addcourse') }}">Add course</a></li>
-										<li><a href="{{ route('admin.courses') }}">Courses List</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-edit"></i> Categories <span class="fa fa-chevron-down"></span></a>
@@ -84,7 +73,12 @@
 										<li><a href="categories.html">Categories List</a></li>
 									</ul>
 								</li>
-
+								<li><a><i class="fa fa-desktop"></i> Cars <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="addCar.html">Add Car</a></li>
+										<li><a href="cars.html">Cars List</a></li>
+									</ul>
+								</li>
 							</ul>
 						</div>
 
@@ -120,7 +114,7 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ asset('admin/images/img.jpg') }}" alt="">{{ Auth::user()->name }}
+                      <img src="{{ asset('admin/images/img.jpg') }}" alt="">m
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -204,100 +198,86 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Manage <small>Users</small></h3>
-              </div>
-
-              <div class="title_right">
-    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-        <form action="{{ route('admin.users') }}" method="GET">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Search for..." value="{{ request('search') }}">
+    <div class="right_col" role="main">
+      <div class="">
+        <div class="page-title">
+          <div class="title_left"><h3>Manage Categories</h3></div>
+          <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit">Go!</button>
+                  <button class="btn btn-secondary" type="button">Go!</button>
                 </span>
-            </div>
-        </form>
-    </div>
-</div>
-
-            </div>
-
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12 col-sm-12 ">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>List of Users</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                      <div class="row">
-                          <div class="col-sm-12">
-                            <div class="card-box table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
-                      <thead>
-                        <tr>
-                          <th>Registration Date</th>
-                          <th>Name</th>
-                          <th>Email</th>
-                           <th>Role</th>
-                          <th>Active</th>
-                          <th>Edit</th>
-                        </tr>
-                      </thead>
-
-
-
-<tbody>
-    @foreach ($users as $user)
-        <tr>
-            <td>{{ $user->created_at->format('d M Y') }}</td>
-            <td>{{ $user->name }}</td>
-
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->role }}</td>
-            {{-- <td>{{ $user->is_active ? 'Yes' : 'No' }}</td> --}}
-            <td>
-                {{-- <a href="{{ route('admin.users.edit', $user->id) }}">
-                    <img src="{{ asset('admin/images/edit.png') }}" alt="Edit">
-                </a> --}}
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-
-
-                    </table>
-                  </div>
-                  </div>
-              </div>
-            </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->
 
-        <!-- footer content -->
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>List of Categories</h2>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="x_content">
+                @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
+                <div class="table-responsive">
+                  <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Category Name</th>
+                        <th>Description</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      @foreach($categories as $category)
+                        <tr>
+                          <td>{{ $loop->iteration }}</td>
+                          <td>{{ $category->title }}</td>
+                          <td>{{ \Illuminate\Support\Str::limit($category->description, 80) }}</td>
+                          <td class="text-center">
+                            <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-sm btn-info" title="Edit">
+                              <img src="{{ asset('admin/images/edit.png') }}" alt="Edit" style="width:18px;height:18px;">
+                            </a>
+                          </td>
+                          <td class="text-center">
+                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف هذا التصنيف؟');">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-sm btn-danger" title="Delete">
+                                <img src="{{ asset('admin/images/delete.png') }}" alt="Delete" style="width:18px;height:18px;">
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+
+                  </table>
+                </div> <!-- /table-responsive -->
+              </div> <!-- /x_content -->
+
+            </div> <!-- /x_panel -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /page content -->
+
+         <!-- footer content -->
         <footer>
           <div class="pull-right">
             Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
@@ -340,4 +320,3 @@
 
   </body>
 </html>
-

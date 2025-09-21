@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,29 +8,30 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Rent Car Admin | Add Category</title>
+	<title>Rent Car Admin | Add User</title>
 
 	<!-- Bootstrap -->
-	<link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{ asset('admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
 	<!-- Font Awesome -->
-	<link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<link href="{{ asset('admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 	<!-- NProgress -->
-	<link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+	<link href="{{ asset('admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
 	<!-- iCheck -->
-	<link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	<link href="{{ asset('admin/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
 	<!-- bootstrap-wysiwyg -->
-	<link href="vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+	<link href="{{ asset('admin/vendors/google-code-prettify/bin/prettify.min.css') }}" rel="stylesheet">
 	<!-- Select2 -->
-	<link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+	<link href="{{ asset('admin/vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
 	<!-- Switchery -->
-	<link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+	<link href="  {{ asset('admin/vendors/switchery/dist/switchery.min.css') }}" rel="stylesheet">
 	<!-- starrr -->
-	<link href="vendors/starrr/dist/starrr.css" rel="stylesheet">
+	<link href="{{ asset('admin/vendors/starrr/dist/starrr.css') }}" rel="stylesheet">
 	<!-- bootstrap-daterangepicker -->
-	<link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+	<link href=" {{ asset('admin/vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
 
 	<!-- Custom Theme Style -->
-	<link href="build/css/custom.min.css" rel="stylesheet">
+	<link href="{{ asset('admin/build/css/custom.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -214,7 +216,7 @@
 				<div class="">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Manage Categories</h3>
+							<h3>Manage Users</h3>
 						</div>
 
 						<div class="title_right">
@@ -233,7 +235,7 @@
 						<div class="col-md-12 col-sm-12 ">
 							<div class="x_panel">
 								<div class="x_title">
-									<h2>Add Category</h2>
+									<h2>Add User</h2>
 									<ul class="nav navbar-right panel_toolbox">
 										<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
 										</li>
@@ -256,13 +258,40 @@
 									<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
 										<div class="item form-group">
-											<label class="col-form-label col-md-3 col-sm-3 label-align" for="add-category">Add Category <span class="required">*</span>
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Full Name <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 ">
-												<input type="text" id="add-category" required="required" class="form-control ">
+												<input type="text" id="first-name" required="required" class="form-control ">
 											</div>
 										</div>
-										
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="user-name">Username <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input type="text" id="user-name" name="user-name" required="required" class="form-control">
+											</div>
+										</div>
+										<div class="item form-group">
+											<label for="email" class="col-form-label col-md-3 col-sm-3 label-align">Email <span class="required">*</span></label>
+											<div class="col-md-6 col-sm-6 ">
+												<input id="email" class="form-control" type="email" name="email" required="required">
+											</div>
+										</div>
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align">Active</label>
+											<div class="checkbox">
+												<label>
+													<input type="checkbox" class="flat">
+												</label>
+											</div>
+										</div>
+										<div class="item form-group">
+											<label class="col-form-label col-md-3 col-sm-3 label-align" for="password">Password <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 ">
+												<input type="password" id="password" name="password" required="required" class="form-control">
+											</div>
+										</div>
 										<div class="ln_solid"></div>
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">

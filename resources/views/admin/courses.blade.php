@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,20 +9,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Users</title>
+    <title>Meetings</title>
 
     <!-- Bootstrap -->
-    <link href="{{ asset('admin/cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css') }}">
+    <link href="{{ asset('admin/cdn.datatables.net/1.10.20/css/jquery.dataTables.min') }}">
     <link href="{{ asset('admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ asset('admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="" rel="stylesheet">
     <!-- iCheck -->
-    <link href="{{ asset('admin/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- Datatables -->
 
-    <link href="{{ asset('admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min..csscss') }}" rel="stylesheet">
     <link href="{{ asset('admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
@@ -48,7 +50,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>{{ Auth::user()->name }}</h2>
+                <h2>John Doe</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -85,6 +87,17 @@
 									</ul>
 								</li>
 
+                <li><a><i class="fa fa-desktop"></i> Testimonials <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="addTestimonials.html">Add Testimonials</a></li>
+										<li><a href="testimonials.html">Edit Testimonials</a></li>
+									</ul>
+								</li>
+                <li><a><i class="fa fa-desktop"></i> Messages <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="messages.html">Messages</a></li>
+									</ul>
+								</li>
 							</ul>
 						</div>
 
@@ -102,7 +115,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title={{ __('Logout') }}  href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -120,7 +133,7 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ asset('admin/images/img.jpg') }}" alt="">{{ Auth::user()->name }}
+                      <img src="{{ asset('admin/images/img.jpg') }}" alt="">John Doe
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -177,7 +190,7 @@
                       </li>
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="{{ asset('admin/images/img.jpg') }} " alt="Profile Image" /></span>
+                          <span class="image"><img src="{{ asset('admin/images/img.jpg') }}" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -204,97 +217,122 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Manage <small>Users</small></h3>
-              </div>
+    <div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Manage Courses</h3>
+      </div>
 
-              <div class="title_right">
-    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-        <form action="{{ route('admin.users') }}" method="GET">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Search for..." value="{{ request('search') }}">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit">Go!</button>
-                </span>
-            </div>
-        </form>
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" type="button">Go!</button>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
 
-            </div>
+    <div class="clearfix"></div>
 
+    <div class="row">
+      <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+          <div class="x_title">
+            <h2>List of Courses</h2>
+            <ul class="nav navbar-right panel_toolbox">
+              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Settings 1</a>
+                  <a class="dropdown-item" href="#">Settings 2</a>
+                </div>
+              </li>
+              <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+            </ul>
             <div class="clearfix"></div>
-
+          </div>
+          <div class="x_content">
             <div class="row">
-              <div class="col-md-12 col-sm-12 ">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>List of Users</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Settings 1</a>
-                            <a class="dropdown-item" href="#">Settings 2</a>
-                          </div>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                      <div class="row">
-                          <div class="col-sm-12">
-                            <div class="card-box table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
-                      <thead>
+              <div class="col-sm-12">
+                <div class="card-box table-responsive">
+                  <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Teacher</th>
+                        <th>Teacher Job</th>
+                        <th>Lessons</th>
+                        <th>Price</th>
+                        <th>Course Image</th>
+                        <th>Teacher Image</th>
+                        <th>Created At</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      @foreach($courses as $course)
                         <tr>
-                          <th>Registration Date</th>
-                          <th>Name</th>
-                          <th>Email</th>
-                           <th>Role</th>
-                          <th>Active</th>
-                          <th>Edit</th>
+                          <td>{{ $course->name }}</td>
+                          <td>{{ $course->category->name ?? 'No Category' }}</td>
+                          <td>{{ $course->teacher->name ?? 'Unknown' }}</td>
+                          <td>{{ $course->teacher_job ?? 'N/A' }}</td>
+                          <td>{{ $course->lessons }}</td>
+                          <td>{{ $course->price }} $</td>
+
+                          <td>
+                            @if($course->course_image)
+                              <img src="{{ asset('storage/'.$course->course_image) }}" width="60" alt="Course Image">
+                            @else
+                              N/A
+                            @endif
+                          </td>
+
+                          <td>
+                            @if($course->teacher_image)
+                              <img src="{{ asset('storage/'.$course->teacher_image) }}" width="60" alt="Teacher Image">
+                            @else
+                              N/A
+                            @endif
+                          </td>
+
+                          <td>{{ $course->created_at->format('Y-m-d') }}</td>
+                          <td>
+                            <a href="{{ route('admin.courses.edit', $course->id) }}">
+                              <img src="{{ asset('admin/images/edit.png') }}" alt="Edit">
+                            </a>
+                          </td>
+                          <td>
+                            <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this course?');">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" style="border:none; background:none;">
+                                <img src="{{ asset('admin/images/delete.png') }}" alt="Delete">
+                              </button>
+                            </form>
+                          </td>
                         </tr>
-                      </thead>
-
-
-
-<tbody>
-    @foreach ($users as $user)
-        <tr>
-            <td>{{ $user->created_at->format('d M Y') }}</td>
-            <td>{{ $user->name }}</td>
-
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->role }}</td>
-            {{-- <td>{{ $user->is_active ? 'Yes' : 'No' }}</td> --}}
-            <td>
-                {{-- <a href="{{ route('admin.users.edit', $user->id) }}">
-                    <img src="{{ asset('admin/images/edit.png') }}" alt="Edit">
-                </a> --}}
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-
-
-                    </table>
-                  </div>
-                  </div>
-              </div>
-            </div>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
         <!-- /page content -->
 
         <!-- footer content -->
@@ -340,4 +378,3 @@
 
   </body>
 </html>
-

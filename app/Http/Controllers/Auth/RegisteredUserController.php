@@ -17,10 +17,10 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
-    {
-        return view('auth.register');
-    }
+    // public function create(): View
+    // {
+    //     return view('auth.register');
+    // }
 
     /**
      * Handle an incoming registration request.
@@ -33,11 +33,13 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+             'role' => ['required', 'in:student,teacher'], //  only allow these
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+             'role' => $request->role, //  role comes from dropdown
             'password' => Hash::make($request->password),
         ]);
 
@@ -45,6 +47,20 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        
+ // Redirect based on role
+        return $this->redirectBasedOnRole($user);
+    }
+
+    /**
+     * Redirect user based on their role
+     */
+    private function redirectBasedOnRole(User $user): RedirectResponse
+    {
+        return match($user->role) {
+            'teacher' => redirect()->route('teacher.dashboard'),
+            'student' => redirect()->route('student.dashboard'),
+            default => redirect('/dashboard'),
+        };
     }
 }

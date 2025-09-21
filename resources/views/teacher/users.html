@@ -10,24 +10,24 @@
     <title>Users</title>
 
     <!-- Bootstrap -->
-    <link href="{{ asset('admin/cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css') }}">
-    <link href="{{ asset('admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ asset('admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ asset('admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="{{ asset('admin/vendors/iCheck/skins/flat/green.css') }}" rel="stylesheet">
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Datatables -->
-
-    <link href="{{ asset('admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+    
+    <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{ asset('admin/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -44,11 +44,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ asset('admin/images/img.jpg') }}" alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>{{ Auth::user()->name }}</h2>
+                <h2>John Doe</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -62,20 +62,8 @@
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="{{ route('admin.users') }}">Users List</a></li>
+										<li><a href="users.html">Users List</a></li>
 										<li><a href="addUser.html">Add User</a></li>
-									</ul>
-								</li>
-                                <li><a><i class="fa fa-desktop"></i> posts <span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="{{ route('admin.addpost') }}">Add post</a></li>
-										<li><a href="{{ route('admin.posts') }}">posts List</a></li>
-									</ul>
-								</li>
-                                <li><a><i class="fa fa-desktop"></i> Courses<span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="{{ route('admin.addcourse') }}">Add course</a></li>
-										<li><a href="{{ route('admin.courses') }}">Courses List</a></li>
 									</ul>
 								</li>
 								<li><a><i class="fa fa-edit"></i> Categories <span class="fa fa-chevron-down"></span></a>
@@ -84,7 +72,12 @@
 										<li><a href="categories.html">Categories List</a></li>
 									</ul>
 								</li>
-
+								<li><a><i class="fa fa-desktop"></i> Cars <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="addCar.html">Add Car</a></li>
+										<li><a href="cars.html">Cars List</a></li>
+									</ul>
+								</li>
 							</ul>
 						</div>
 
@@ -102,7 +95,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title={{ __('Logout') }}  href="login.html">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -120,7 +113,7 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ asset('admin/images/img.jpg') }}" alt="">{{ Auth::user()->name }}
+                      <img src="images/img.jpg" alt="">John Doe
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -132,7 +125,7 @@
                       <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
-
+  
                   <li role="presentation" class="nav-item dropdown open">
                     <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
                       <i class="fa fa-envelope-o"></i>
@@ -141,7 +134,7 @@
                     <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="{{ asset('admin/images/img.jpg') }}" alt="Profile Image" /></span>
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -153,7 +146,7 @@
                       </li>
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="{{ asset('admin/images/img.jpg') }}" alt="Profile Image" /></span>
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -165,7 +158,7 @@
                       </li>
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="{{ asset('admin/images/img.jpg') }}" alt="Profile Image" /></span>
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -177,7 +170,7 @@
                       </li>
                       <li class="nav-item">
                         <a class="dropdown-item">
-                          <span class="image"><img src="{{ asset('admin/images/img.jpg') }} " alt="Profile Image" /></span>
+                          <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                           <span>
                             <span>John Smith</span>
                             <span class="time">3 mins ago</span>
@@ -210,22 +203,19 @@
               <div class="title_left">
                 <h3>Manage <small>Users</small></h3>
               </div>
-
+///////////////////
               <div class="title_right">
-    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-        <form action="{{ route('admin.users') }}" method="GET">
-            <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Search for..." value="{{ request('search') }}">
-                <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit">Go!</button>
-                </span>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-        </form>
-    </div>
-</div>
-
-            </div>
-
+///////////////////////
             <div class="clearfix"></div>
 
             <div class="row">
@@ -257,34 +247,97 @@
                         <tr>
                           <th>Registration Date</th>
                           <th>Name</th>
+                          <th>Username</th>
                           <th>Email</th>
-                           <th>Role</th>
                           <th>Active</th>
                           <th>Edit</th>
                         </tr>
                       </thead>
 
 
-
-<tbody>
-    @foreach ($users as $user)
-        <tr>
-            <td>{{ $user->created_at->format('d M Y') }}</td>
-            <td>{{ $user->name }}</td>
-
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->role }}</td>
-            {{-- <td>{{ $user->is_active ? 'Yes' : 'No' }}</td> --}}
-            <td>
-                {{-- <a href="{{ route('admin.users.edit', $user->id) }}">
-                    <img src="{{ asset('admin/images/edit.png') }}" alt="Edit">
-                </a> --}}
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-
-
+                      <tbody>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        <tr>
+                          <td>1 Jan 2023</td>
+                          <td>Tony Adam</td>
+                          <td>tony2023</td>
+                          <td>tony@gmail.com</td>
+                          <td>Yes</td>
+                          <td><img src="./images/edit.png" alt="Edit"></td>
+                        </tr>
+                        
+                      </tbody>
                     </table>
                   </div>
                   </div>
@@ -309,35 +362,34 @@
     </div>
 
     <!-- jQuery -->
-    <script src="{{ asset('admin/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-   <script src="{{ asset('admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+   <script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
-    <script src="{{ asset('admin/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="{{ asset('admin/vendors/nprogress/nprogress.js') }}"></script>
+    <script src="vendors/nprogress/nprogress.js"></script>
     <!-- iCheck -->
-    <script src="{{ asset('admin/vendors/iCheck/icheck.min.js') }}"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
     <!-- Datatables -->
-    <script src="{{ asset('admin/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
-    <script src="{{ asset('admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/jszip/dist/jszip.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="{{ asset('admin/build/js/custom.min.js') }}"></script>
+    <script src="build/js/custom.min.js"></script>
 
   </body>
 </html>
-
