@@ -85,6 +85,14 @@
 									</ul>
 								</li>
 
+
+
+								<li><a><i class="fa fa-desktop"></i> Courses<span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="addCar.html">Add course</a></li>
+										<li><a href="cars.html">Coursses List</a></li>
+									</ul>
+								</li
 							</ul>
 						</div>
 

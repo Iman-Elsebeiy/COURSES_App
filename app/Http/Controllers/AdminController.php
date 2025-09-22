@@ -13,18 +13,13 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
-        public function posts()
-    {
-        return view('admin.posts');
-    }
-        public function addpost()
-    {
-        return view('admin.addpost');
-    }
+    
+
+    //     public function users()
+    // {
+    //     return view('admin.users');
+    // }
+
     public function users(Request $request)
 {
      $search = $request->input('search');

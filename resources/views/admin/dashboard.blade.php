@@ -47,8 +47,10 @@
                 <img src="{{ asset('admin/images/img.jpg') }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <span>Welcome,</span
+                <h2>John Doe</h2
+                <h2>{{ Auth::user()->name }}</h2>
+
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -72,10 +74,17 @@
 										<li><a href="categories.html">Categories List</a></li>
 									</ul>
 								</li>
+<<<<<<< HEAD
 								<li><a><i class="fa fa-desktop"></i> Cars <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="{{ route('admin.addpost') }}">Add Car</a></li>
 										<li><a href="{{ route('admin.posts') }}">Cars List</a></li>
+=======
+								<li><a><i class="fa fa-desktop"></i> Courses <span class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="addCar.html">Add Course</a></li>
+										<li><a href="cars.html">Coursses List</a></li>
+>>>>>>> 1c38176f809420aa62a95a748d99cbc954b79e6f
 									</ul>
 								</li>
 							</ul>
@@ -95,7 +104,11 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
+<<<<<<< HEAD
               <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+=======
+              <a data-toggle="tooltip" data-placement="top" title={{ __('Logout') }}  href="login.html">
+>>>>>>> 1c38176f809420aa62a95a748d99cbc954b79e6f
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -113,7 +126,11 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+<<<<<<< HEAD
                       <img src="{{ asset('admin/images/img.jpg') }}" alt="">John Doe
+=======
+                      <img src="{{ asset('admin/images/img.jpg') }}" alt="">{{ Auth::user()->name }}
+>>>>>>> 1c38176f809420aa62a95a748d99cbc954b79e6f
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -201,6 +218,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
+<<<<<<< HEAD
                 <h3>Manage <small>Users</small></h3>
               </div>
 
@@ -214,6 +232,24 @@
                   </div>
                 </div>
               </div>
+=======
+                <h3>Welcome <small>Admins</small></h3>
+              </div>
+
+              <div class="title_right">
+    {{-- <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+        <form action="{{ route('admin.users') }}" method="GET">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search for..."">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">Go!</button>
+                </span>
+            </div>
+        </form>
+    </div> --}}
+</div>
+
+>>>>>>> 1c38176f809420aa62a95a748d99cbc954b79e6f
             </div>
 
             <div class="clearfix"></div>
@@ -222,7 +258,11 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
+<<<<<<< HEAD
                     <h2>List of Users</h2>
+=======
+                    <h2></h2>
+>>>>>>> 1c38176f809420aa62a95a748d99cbc954b79e6f
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -242,7 +282,15 @@
                       <div class="row">
                           <div class="col-sm-12">
                             <div class="card-box table-responsive">
+<<<<<<< HEAD
 
+=======
+                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+
+
+
+                    </table>
+>>>>>>> 1c38176f809420aa62a95a748d99cbc954b79e6f
                   </div>
                   </div>
               </div>
