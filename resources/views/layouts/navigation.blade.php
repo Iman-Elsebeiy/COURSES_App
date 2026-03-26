@@ -1,4 +1,14 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav class="main-menu">
+    <ul>
+        <li><a href="{{route('home.index')}}">Home</a></li>
+        <li><a href="{{route('home.about')}}">About us</a></li>
+        <li><a href="{{route('home.courses')}}">Courses</a></li>
+        <li><a href="{{route('home.blog')}}">News</a></li>
+        <li><a href="{{route('home.contact')}}">Contact</a></li>
+    </ul>
+</nav>
+{{--
+ <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -97,4 +107,4 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}
